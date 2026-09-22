@@ -1,5 +1,8 @@
-# Azure CLI Automated Deployment Script
-# Project ID: 24CC3046-P056: Azure Load Testing for a Web Application Capacity Study
+# Ensure az CLI path is included in current PowerShell session
+$scriptsPath = "C:\Users\LOQ\AppData\Local\Programs\Python\Python312\Scripts"
+if ($env:Path -notlike "*$scriptsPath*") {
+    $env:Path = "$scriptsPath;$env:Path"
+}
 
 param (
     [string]$ResourceGroupName = "rg-loadtest-capacity-study",
