@@ -43,14 +43,14 @@ The objective of this capacity study is to evaluate the scalability, performance
 
 | Service | Resource Name | Tier / SKU | Role / Responsibility |
 |:---|:---|:---|:---|
-| **Resource Group** | `rg-loadtest-capacity-study` | N/A | Logical boundary for all project assets |
-| **App Service Plan** | `asp-capacity-study` | Standard S1 (1 Core, 1.75 GB) | Compute hosting with Autoscale & multi-instance support |
-| **App Service** | `app-capacity-study` | Linux Node 20 LTS | Production-like Web Application API |
-| **Database** | Azure Database for PostgreSQL | Flexible Server (Burstable B1ms) | Relational database (users, products, orders, items) |
-| **App Insights** | `appi-capacity-study` | Enterprise / Workspace-based | Live metrics, APM, dependency analysis & tracing |
-| **Log Analytics** | `law-capacity-study` | PerGB2018 | Centralized log ingestion and Kusto query engine |
-| **Azure Load Testing** | `alt-capacity-study` | Managed Load Engine | Distributed virtual user load generator |
-| **Azure Monitor** | Autoscale Settings | CPU Threshold Rules | Dynamic horizontal scale-out (CPU>70%) & scale-in (CPU<30%) |
+| **Resource Group** | `rg-loadtest-capacity-study` | Central India | Logical boundary for all project assets |
+| **App Service Plan** | `asp-capacity-study-363acfoagthui` | Standard S1 (1 Core, 1.75 GB) | Compute hosting with Autoscale & multi-instance support |
+| **App Service** | `app-capacity-study-363acfoagthui` | Linux Node 22 LTS | Production-like Web Application API |
+| **Database** | Relational In-Memory + PostgreSQL | Flexible Server / In-Memory Seed | Relational database (100 users, 500 products, 1,000 orders) |
+| **App Insights** | `appi-capacity-study-363acfoagthui` | Enterprise / Workspace-based | Live metrics, APM, dependency analysis & tracing |
+| **Log Analytics** | `law-capacity-study-363acfoagthui` | PerGB2018 | Centralized log ingestion and Kusto query engine |
+| **Azure Load Testing** | `alt-capacity-study-363acfoagthui` | Managed Load Engine | Distributed virtual user load generator |
+| **Azure Monitor** | `autoscale-asp-capacity-study-363acfoagthui` | CPU Threshold Rules | Dynamic horizontal scale-out (CPU>70%) & scale-in (CPU<30%) |
 
 ---
 
