@@ -47,6 +47,44 @@ async function seed() {
     { cat: 'Storage', names: ['PCIe 4.0 NVMe SSD 2TB', 'External Rugged SSD 1TB', 'NAS Storage Server 16TB', 'Enterprise Flash Drive 512GB'] }
   ];
 
+  const categoryImages = {
+    'Laptops': [
+      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=600&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=600&auto=format&fit=crop&q=80'
+    ],
+    'Smartphones': [
+      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=600&auto=format&fit=crop&q=80'
+    ],
+    'Monitors': [
+      'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1585792180666-f7347c490ee2?w=600&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&auto=format&fit=crop&q=80'
+    ],
+    'Audio': [
+      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=600&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=600&auto=format&fit=crop&q=80'
+    ],
+    'Accessories': [
+      'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=600&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1595225476474-87563907a212?w=600&auto=format&fit=crop&q=80'
+    ],
+    'Gaming': [
+      'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1612287233207-6b66e3001815?w=600&auto=format&fit=crop&q=80'
+    ],
+    'Storage': [
+      'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=600&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1544652478-6653e09f18a2?w=600&auto=format&fit=crop&q=80'
+    ]
+  };
+
   let prodId = 1;
   for (let i = 1; i <= 500; i++) {
     const pTypeGroup = productTypes[i % productTypes.length];
@@ -57,13 +95,16 @@ async function seed() {
     const price = parseFloat((25 + (i * 7.5) % 1950).toFixed(2));
     const stock = 20 + (i * 13) % 250;
     const description = `High-performance ${name} with enterprise reliability, optimized for productivity and gaming.`;
+    const imgList = categoryImages[category] || categoryImages['Laptops'];
+    const imageUrl = imgList[i % imgList.length];
+    const rating = parseFloat((4.3 + (i % 7) * 0.1).toFixed(1));
 
     if (db.type === 'memory') {
-      db.store.products.push({ id: prodId++, name, category, price, stock, description });
+      db.store.products.push({ id: prodId++, name, category, price, stock, description, image_url: imageUrl, rating });
     } else {
       await db.query(
-        'INSERT INTO products (name, category, price, stock, description) VALUES (?, ?, ?, ?, ?)',
-        [name, category, price, stock, description]
+        'INSERT INTO products (name, category, price, stock, description, image_url, rating) VALUES (?, ?, ?, ?, ?, ?, ?)',
+        [name, category, price, stock, description, imageUrl, rating]
       );
     }
   }

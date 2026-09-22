@@ -127,7 +127,9 @@ if (!dbClient) {
           category: params[1],
           price: parseFloat(params[2]),
           stock: parseInt(params[3], 10),
-          description: params[4]
+          description: params[4],
+          image_url: params[5] || null,
+          rating: parseFloat(params[6] || 4.8)
         });
         return { rows: [{ id }], rowCount: 1, lastInsertRowid: id, duration: Date.now() - start };
       }

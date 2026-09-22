@@ -36,6 +36,8 @@ async function initSchema() {
       price NUMERIC(10, 2) NOT NULL,
       stock INTEGER NOT NULL DEFAULT 100,
       description TEXT,
+      image_url TEXT,
+      rating NUMERIC(3, 1) DEFAULT 4.8,
       created_at TIMESTAMP DEFAULT ${timestampDefault}
     )
   `);
