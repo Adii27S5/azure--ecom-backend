@@ -1,0 +1,21 @@
+version: v0.1
+testName: Capacity-Study-Load-Test
+testPlan: capacity_study.jmx
+description: "Hackathon 24CC3046-P056 Capacity Study Load Test"
+engineInstances: 1
+env:
+  - name: app_host
+    value: "app-capacity-study-363acfoagthui.azurewebsites.net"
+  - name: app_port
+    value: "443"
+  - name: app_protocol
+    value: "https"
+  - name: threads
+    value: "50"
+  - name: duration
+    value: "180"
+  - name: rampup
+    value: "30"
+failureCriteria:
+  - avg(response_time_ms) > 1000
+  - percentage(error) > 5

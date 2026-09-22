@@ -10,7 +10,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="APP_HOST" elementType="Argument">
             <stringProp name="Argument.name">APP_HOST</stringProp>
-            <stringProp name="Argument.value">${__P(app_host, app-capacity-study.azurewebsites.net)}</stringProp>
+            <stringProp name="Argument.value">${__P(app_host, app-capacity-study-363acfoagthui.azurewebsites.net)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="APP_PORT" elementType="Argument">
